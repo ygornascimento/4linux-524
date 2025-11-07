@@ -15,14 +15,33 @@ Para a criação do laboratório é necessário ter pré instalado os seguintes 
 * [VirtualBox][3]
 * [Vagrant][5]
 
-> Para o máquinas com Linux aconselhamos, se possível, que as instalações sejam feitas pelo gerenciador de pacotes da distro utilizada com as seguintes observações:
-    Se para ter um pouco mais de performance com o hardware você quiser usar KVM/QEMU/LIBVIRT ao invés de Virtualbox, será necessário:
-    
-    ```sudo apt update
+> Para o máquinas com Linux aconselhamos, se possível, que as instalações sejam feitas pelo gerenciador de pacotes da distro utilizada. Se você quiser usar **KVM/QEMU/LIBVIRT** ao invés de **Virtualbox**, será necessário:
+
+    1. Instale as dependências de compilação e de libvirt:
+
+        sudo apt update
         sudo apt install -y \
-        qemu libvirt-daemon-system libvirt-clients ebtables dnsmasq-base \
+        qemu-system libvirt-daemon-system libvirt-clients ebtables dnsmasq-base \
         ruby-dev libvirt-dev libxml2-dev libxslt-dev zlib1g-dev \
-        build-essential make gcc pkg-config```
+        build-essential make gcc pkg-config
+
+    2. Verifique se o serviço do libvirt está rodando:
+
+        sudo systemctl enable --now libvirtd
+        sudo systemctl status libvirtd
+
+    3. Instale o plugin do Vagrant:
+        vagrant plugin install vagrant-libvirt
+
+    4. Dê permissão ao seu usuário:
+        sudo usermod -aG libvirt $(whoami)
+        sudo usermod -aG kvm $(whoami)
+        newgrp libvirt
+
+    5. Suba o ambiente do Vagrant usando:
+        vagrant up --provider=libvirt
+
+
 
 
 > Para o máquinas com Windows aconselhamos, se possível, que as instalações sejam feitas pelo gerenciador de pacotes **[Cygwin][6]**.
