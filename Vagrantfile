@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
   end
     
   vms.each do |name, conf|
-    config.vbguest.iso_path = "https://download.virtualbox.org/virtualbox/7.0.8/VBoxGuestAdditions_7.0.8.iso"
+    config.vbguest.iso_path = "https://download.virtualbox.org/virtualbox/7.0.16/VBoxGuestAdditions_7.0.16.iso"
     #config.disksize.size = "50GB"
     config.vm.define "#{name}" do |k|
       k.vm.box = "#{conf['box']}"
