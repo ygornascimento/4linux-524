@@ -15,6 +15,16 @@ Para a criação do laboratório é necessário ter pré instalado os seguintes 
 * [VirtualBox][3]
 * [Vagrant][5]
 
+> Para o máquinas com Linux aconselhamos, se possível, que as instalações sejam feitas pelo gerenciador de pacotes da distro utilizada com as seguintes observações:
+    Se para ter um pouco mais de performance com o hardware você quiser usar KVM/QEMU/LIBVIRT ao invés de Virtualbox, será necessário:
+    
+    ```sudo apt update
+        sudo apt install -y \
+        qemu libvirt-daemon-system libvirt-clients ebtables dnsmasq-base \
+        ruby-dev libvirt-dev libxml2-dev libxslt-dev zlib1g-dev \
+        build-essential make gcc pkg-config```
+
+
 > Para o máquinas com Windows aconselhamos, se possível, que as instalações sejam feitas pelo gerenciador de pacotes **[Cygwin][6]**.
 
 > Para as máquinas com MAC OS aconselhamos, se possível, que as instalações sejam feitas pelo gerenciador de pacotes **brew**.
